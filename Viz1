@@ -1,0 +1,31 @@
+{
+  "config": {"view": {"continuousWidth": 300, "continuousHeight": 300}},
+  "vconcat": [
+    {
+      "mark": {"type": "point"},
+      "encoding": {
+        "color": {"field": "property_type_en", "type": "nominal"},
+        "x": {"field": "rent_value", "type": "quantitative", "aggregate": "average"},
+        "y": {"field": "meter_rent_price", "type": "quantitative"},
+        "detail": {"field": "project_number"}
+      },
+      "transform": [{"filter": "datum.meter_rent_price < 50000"}, {"filter": "datum.rent_value < 10000000"}],
+    
+      "name": "view_80"
+    },
+    {
+      "mark": {"type": "bar"},
+      "encoding": {
+        "color": {"field": "property_type_en", "type": "nominal"},
+        "x": {"aggregate": "count", "type": "quantitative"},
+        "y": {"field": "property_type_en", "type": "nominal"}
+      },
+      "transform": [{"filter": {"param": "param_82"}}]
+    }
+  ],
+  "data": {"url": "https://raw.githubusercontent.com/sheriefAbdallah/CS318/main/Transactions-smaller.csv"},
+  "params": [
+    {"name": "param_82", "select": {"type": "interval"}, "views": ["view_80"]}
+  ],
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json"
+}
