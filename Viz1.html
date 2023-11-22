@@ -31,7 +31,6 @@
 			            "color": {"field": "property_type_en", "type": "nominal"}, // Color encoding by property type
 			            "x": {"field": "rent_value", "type": "quantitative", "aggregate": "average"}, // X-axis encoding with average rent value
 			            "y": {"field": "meter_rent_price", "type": "quantitative"}, // Y-axis encoding with meter rent price
-			            "detail": {"field": "project_number"} // Detail encoding to maintain separation between points
 			         },
 			         "transform": [
 			            {"filter": "datum.meter_rent_price < 50000"}, // Filter to limit meter rent price
@@ -53,10 +52,7 @@
 			         ]
 			      }
 			   ],
-			   "selection": {
-			      "mySelection": {"type": "interval", "bind": "scales"} // Global interactive selection binding to scales
-			   },
-			}
+				}
 			
 			// Embed the visualization in the container with id `vis` using the Vega-Embed library
 			vegaEmbed('#vis', vlSpec);
